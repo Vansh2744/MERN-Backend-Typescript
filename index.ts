@@ -27,30 +27,8 @@ app.post("/signin", async (req, res) => {
 });
 
 app.post("/subscribe", async (req, res) => {
-  const {
-    name,
-    price,
-    currency,
-    frequency,
-    category,
-    paymentMethod,
-    status,
-    startDate,
-    renewalDate,
-    user,
-  } = req.body;
-
   const subscibe = await Subscription.create({
-    name,
-    price,
-    currency,
-    frequency,
-    category,
-    paymentMethod,
-    status,
-    startDate,
-    renewalDate,
-    user,
+    ...req.body,
   });
 
   return res.json({ subscibe });
